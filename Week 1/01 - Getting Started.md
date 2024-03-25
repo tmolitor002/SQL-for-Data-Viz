@@ -88,6 +88,3 @@ Next, lets look at `play_by_play_2023.csv`. There are many more fields here that
 
 There are plenty more fields to take a look at, however we will be ignoring about half of them as we move deeper into the course.
 
-# Creating your database in DB Browser
-
-You've already taken a big step! You've downloaded all the tools you'll need, and have completed a light review of some of the data we will be working with. Now it is time to set up your database.
