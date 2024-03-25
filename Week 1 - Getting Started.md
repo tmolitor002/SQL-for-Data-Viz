@@ -1,18 +1,12 @@
----
-tags:
-  - 2024/March
-  - slalom/training
-  - sql
----
 # Introduction
 
-This training will utilize [[Week 1 - Getting Started#SQLite|SQLite]] and [[Week 1 - Getting Started#DB Browser for SQLite|DB Browser]] to build and understanding of how to utilize SQL for Data Visualization resources. This course assumes you have no prior knowledge of SQL, but does assume you have a level of comfort with exploring and learning. If you already are comfortable with another tech stack or would like to use a different set of tools to learn SQL, you'll be responsible for both the setup and bridging any differences with this training.
+This training will utilize SQLite and DB Browser to build and understanding of how to utilize SQL for Data Visualization resources. This course assumes you have no prior knowledge of SQL, but does assume you have a level of comfort with exploring and learning. If you already are comfortable with another tech stack or would like to use a different set of tools to learn SQL, you'll be responsible for both the setup and bridging any differences with this training.
 
 
 # Contents
 
-- [[Week 1 - Getting Started#Required Software|Required Software]]
-- [[Week 1 - Getting Started#Suggested Software|Suggested Software]]
+- Required Software
+- Suggested Software
 - Sample Project Overview
 - Sample Data Review
 # Required Software
@@ -25,7 +19,7 @@ For this training, the SQLite database will be hosted locally on your machine, m
 
 ### Install SQLite
 
-While SQLite can be installed by itself, we will install SQLite as part of the the install for [[Week 1 - Getting Started#Install DB Browser for SQLite|DB Browser]]. To install SQLite on its own, you can start by downloading the latest version [here](https://www.sqlite.org/index.html).
+While SQLite can be installed by itself, we will install SQLite as part of the the install for DB Browser. To install SQLite on its own, you can start by downloading the latest version [here](https://www.sqlite.org/index.html).
 
 ### Additional Information
 
@@ -35,7 +29,7 @@ It is possible SQLite will not be used as the database engine used by clients. M
 
 ## [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 
-DB Browser is an open source interface that can be used to interact with [[Week 1 - Getting Started#SQLite|SQLite]] databases. It can be used to import/export data, query tables, and create new tables or delete existing ones. Similar to SQLite, it is possible you'll be using a different interface that is designed to work with your database engine. Some common interfaces include SSMS (Microsoft SQL Server Management Studio) and [dbt](https://www.getdbt.com).
+DB Browser is an open source interface that can be used to interact with SQLite databases. It can be used to import/export data, query tables, and create new tables or delete existing ones. Similar to SQLite, it is possible you'll be using a different interface that is designed to work with your database engine. Some common interfaces include SSMS (Microsoft SQL Server Management Studio) and [dbt](https://www.getdbt.com).
 
 ### Install DB Browser for SQLite
 
