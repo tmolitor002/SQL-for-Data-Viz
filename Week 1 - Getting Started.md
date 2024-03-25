@@ -67,3 +67,27 @@ While the data we use is included in [this repository](https://github.com/tmolit
 - `play_by_play_2023.csv`: This file contains every play that occurred throughout the 2023 season, with a new row or record for each snap. This file is extremely wide, and many fields are simply indicators to show if a certain type of event happened.
 - `play_by_play_2022.csv`: This file is nearly identical in structure to `play_by_play_2023.csv`, however it contains data for the 2022 season. This file will not be heavily used within the course, however it can be helpful to see how the same logic can apply to multiple sources.
 
+Take a moment to open up the `players.csv` file and the `play_by_play_2023.csv` files and start to familiarize yourself with the structure of the raw data. There is certainly a lot here to review, and you certainly do not need to memorize everything.
+
+There are a couple of columns we should stop and highlight in each of the files. Looking first at `players.csv`, which has one row for each unique player, there are a couple of things to point out:
+- `status` indicates what the current playing status of the player is. We will be focusing largely on active (`ACT`) players who are still playing.
+- `display_name`, `first_name`, `last_name`, and `suffix`: While it might appear at first glance that `display_name` is just a combination of these three other fields, that is not always the case. We will look into this more in depth later in the course, but for now, note that we will primarily be using `display_name` particular player
+- `gsis_id`: This is one of two ID fields that can be used to uniquely identify a player.
+- `position`: This is the primary position that the player plays. While occasionally a running back might throw the ball instead of the quarterback, it is useful when we want to compare the same types of players to each other.
+- `jersey_number`: This is just the current number the player wears on their jersey. While within a single game players must have unique jersey numbers within their team, and certain positions are required to wear certain numbers within specified ranges, we will mostly use this dimension as a way to add some flare to a dashboard
+- `headshot`: This is a URL to the current headshot of a player. This can be another great way to add some flare to a visualization down the line
+
+Next, lets look at `play_by_play_2023.csv`. There are many more fields here that will get cleaned up as we push forward. For now, lets stick with some basics:
+- `play_id`: A unique number for each play that occurred within the season.
+- `game_id`: A unique id for each game played. Note that there are multiple plays in a game. `game_id` appears to be structured as `<season_year>_<week_number>_<away_team>_<home_team>`
+- `week`: The week in which the play and game occurred. Each week in the NFL typically starts with Thursday Night Football and concludes with Monday Night Football.
+- `desc`: A short description of what occurred during the play. This field won't be very helpful for visualizing data, but it can be a great way to check that your logic and queries executed properly.
+- `play_type`: Typically plays in the NFL are either a `pass` or a `run`, and will be the focus of plays we look at. Additionally, there are several types of kicking plays that occur throughout a game
+- `yards_gained`: The number of yards the offensive team moved forward. This number can be negative if they have a bad play!
+- `td_player_id`: This is the player ID of the player scoring a touchdown, which is what the offensive team is trying to accomplish. There are other player often involved in a touchdown, and we will explore that in more depth later on.
+
+There are plenty more fields to take a look at, however we will be ignoring about half of them as we move deeper into the course.
+
+# Creating your database in DB Browser
+
+You've already taken a big step! You've downloaded all the tools you'll need, and have completed a light review of some of the data we will be working with. Now it is time to set up your database.
