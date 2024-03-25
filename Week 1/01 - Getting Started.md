@@ -88,4 +88,4 @@ Next, lets look at `play_by_play_2023.csv`. There are many more fields here that
 
 There are plenty more fields to take a look at, however we will be ignoring about half of them as we move deeper into the course.
 
-This is a great time to pause and take a break. If you're ready to keep going, next up is [Starting DB Browser](/Week 1/02 - Starting DB Browser)
+This is a great time to pause and take a break. If you're ready to keep going, next up is [Starting DB Browser](Week 1/02 - Starting DB Browser)
