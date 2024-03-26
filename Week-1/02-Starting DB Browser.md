@@ -78,7 +78,7 @@ IDs are often used in SQL to differentiate between two different records. Imagin
 
 When working with data, it is considered a best practice to ensure that every table has at least one field that acts as a unique identifier for each record in the table. `raw_players` happens to have two unique ID fields, `gsis_id` and `esb_id`. We will be using `gsis_id` going forward.
 
-If no unique ID exists, there should be a clear combination of fields that creates unique records. If you happen to discover this in practice, you should alert your Database Administrator.
+If no unique ID exists, there should be a clear combination of fields that creates unique records. This is called a **Composite Key**. If you happen to discover this in practice, you should alert your Database Administrator, and ask for a surrogate key to be created.
 
 When an ID is unique for each record in a table it called a **Primary Key**, often stylized as `PK`. Only one field within a table should be considered a Primary Key.
 
