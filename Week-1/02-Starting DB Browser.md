@@ -41,6 +41,8 @@ Congratulations, you database is now up and running! It should look something li
 
 From this point alone you could connect to your database and begin to visualize your data. But then we wouldn't learn much SQL. And certainly you have questions about what is a table, and why we added `raw_` to the start of the table names.
 
+---
+
 # What is a Table?
 
 At its very core, a table in SQL is a dataset laid out in two dimensions. Instead of using columns and rows like in a spreadsheet, a table uses **fields** and **records**. **Fields** run from left-to-right, and are typically distinct types of data. In DB Browser, select the carrot next to `raw_players` to expand the table to see a list of the different fields within the table.
