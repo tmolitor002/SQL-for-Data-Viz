@@ -108,3 +108,7 @@ B --> C(analytics_)
 - `raw_`: Represents the raw data in the same form as how we loaded it into the database.
 - `xfrmt_`: Represents the data after it has been cleaned and transformed into more useful tables
 - `analtyics_`: Represents the layer that a data viz developer would have access to.
+
+---
+
+Up next we will explore the rest of [DB Browser](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-1/03-Exploring%20DB%20Browser.md) and write our first SQL statement.
