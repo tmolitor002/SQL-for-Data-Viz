@@ -86,3 +86,170 @@ WHERE play_type = 'pass'
 | total_air_yards |
 | --------------: |
 |          148891 |
+
+## MIN(), MAX(), COUNT(), and AVG()
+
+In addition to `SUM()`, there are four other aggregate functions that are used similarily. With the exception of `COUNT()`, all aggregate functions will ignore null values in their calculations.
+
+- `MIN()` returns the lowest value in the field
+- `MAX()` returns the largest value in the field
+- `COUNT()` returns the number of records
+- `AVG()` returns the mean of the values in the field
+
+Let's use these functions to get some more insight into the air_yards field:
+
+```sql
+SELECT --play_id
+    --, passer_player_id
+    SUM(air_yards)      AS total_air_yards   -- Add all the values in air_yards to get a total
+    , MIN(air_yards)    AS shortest_pass
+    , MAX(air_yards)    AS longest_pass
+    , COUNT(air_yards)  AS number_of_passes
+    , AVG(air_yards)    AS avg_pass_distance
+    --, yards_after_catch
+    --, pass_touchdown
+    --, interception
+    --, pass_attempt
+    --, complete_pass
+FROM raw_pbp2023
+WHERE play_type = 'pass'
+;
+```
+
+| total_air_yards | shortest_pass | longest_pass | number_of_passes | avg_pass_distance |
+| --------------: | :------------ | :----------- | ---------------: | ----------------: |
+|          148891 | -1            | 9            |            19184 |  7.76120725604671 |
+
+Now that we know how to use the aggregate functions in SQL, let's modify our query to see some metrics that will be a bit more helpful in evaluating quarterback performance:
+
+```SQL
+SELECT --play_id
+    --, passer_player_id
+    SUM(air_yards)              AS total_air_yards
+    , AVG(air_yards)            AS avg_air_yards
+    , SUM(yards_after_catch)    AS total_yards_after_catch
+    , AVG(yards_after_catch)    AS avg_yards_after_catch
+    , SUM(pass_touchdown)       AS pass_touchdowns
+    , SUM(interception)         AS interceptions
+    , SUM(pass_attempt)         AS pass_attempts
+    , SUM(complete_pass)        AS completions
+FROM raw_pbp2023
+WHERE play_type = 'pass'
+;
+```
+
+| total_air_yards |    avg_air_yards | total_yards_after_catch | avg_yards_after_catch | pass_touchdowns | interceptions | pass_attempts | completions |
+| --------------: | ---------------: | ----------------------: | --------------------: | --------------: | ------------: | ------------: | ----------: |
+|          148891 | 7.76100725604671 |                   65025 |      5.23255813953488 |             799 |           443 |         20723 |       12427 |
+
+## Group By
+
+Seeing these results is a great way to see how much passing there was in the 2023 season. However, We've moved from being way too zoomed in having every individual passing play to only being able to see the entire NFL. To evaluate how each quarterback performed, we should include the `passer_player_id` field in our calculations.
+
+If we were to try to run the same query by just adding the passer_player_id back in, what do you think would happen? Try running the below query in DB Browser to find out.
+
+```sql
+SELECT passer_player_id
+    , SUM(air_yards)            AS total_air_yards
+    , AVG(air_yards)            AS avg_air_yards
+    , SUM(yards_after_catch)    AS total_yards_after_catch
+    , AVG(yards_after_catch)    AS avg_yards_after_catch
+    , SUM(pass_touchdown)       AS pass_touchdowns
+    , SUM(interception)         AS interceptions
+    , SUM(pass_attempt)         AS pass_attempts
+    , SUM(complete_pass)        AS completions
+FROM raw_pbp2023
+WHERE play_type = 'pass'
+;
+```
+
+| passer_player_id | total_air_yards |    avg_air_yards | total_yards_after_catch | avg_yards_after_catch | pass_touchdowns | interceptions | pass_attempts | completions |
+| :--------------- | --------------: | ---------------: | ----------------------: | --------------------: | --------------: | ------------: | ------------: | ----------: |
+| 00-0037077       |          148891 | 7.76100725604671 |                   65025 |      5.23255813953488 |             799 |           443 |         20723 |       12427 |
+
+You might have noticed that while we do have a `passer_player_id` field populated, the rest of the metrics remain the same. If you are following along in another SQL tool, you may have received an error message. So what happened?
+
+The datasbase engine aggregated our metrics for us as we expected into one record. However for the `passer_player_id` field, becasue not method of aggregation was provided, only the first value was returned. In other SQL tools, an error may have been thrown indicating that there was no instruction given on how to aggregate the `passer_player_id` field, and so no values were returned at all. And that should makes sense, you wouldn't add or find the average of a list of IDs.
+
+To get one record for every passer, we add the `GROUP BY` clause to our query. This tells the data base to aggregate each field based another field.
+
+```sql
+SELECT passer_player_id
+    , SUM(air_yards)            AS total_air_yards
+    , AVG(air_yards)            AS avg_air_yards
+    , SUM(yards_after_catch)    AS total_yards_after_catch
+    , AVG(yards_after_catch)    AS avg_yards_after_catch
+    , SUM(pass_touchdown)       AS pass_touchdowns
+    , SUM(interception)         AS interceptions
+    , SUM(pass_attempt)         AS pass_attempts
+    , SUM(complete_pass)        AS completions
+FROM raw_pbp2023
+WHERE play_type = 'pass'
+GROUP BY passer_player_id   -- One record for each passer_player_id
+;
+```
+
+The results here now show us one record for each passer:
+
+| passer_player_id | total_air_yards |    avg_air_yards | total_yards_after_catch | avg_yards_after_catch | pass_touchdowns | interceptions | pass_attempts | completions |
+| :--------------- | --------------: | ---------------: | ----------------------: | --------------------: | --------------: | ------------: | ------------: | ----------: |
+| 00-0023459       |              17 |             17.0 |                         |                       |               0 |             0 |             2 |           0 |
+| 00-0026158       |            2224 |            8.896 |                     808 |      5.14649681528662 |              14 |            10 |           263 |         157 |
+| 00-0026498       |            4368 | 7.88447653429603 |                    2102 |      5.98860398860399 |              26 |            11 |           589 |         351 |
+| ...              |             ... |              ... |                     ... |                   ... |             ... |           ... |           ... |         ... |
+
+Like the other clauses in a SQL statement, the `GROUP BY` clause can have many fields that the aggregation is broken down by. Let's add the field `posteam` (the team on offense) to both the `SELECT` clause and `GROUP BY` clause
+
+```sql
+SELECT posteam      -- team the passer plays for
+    , passer_player_id
+    , SUM(air_yards)            AS total_air_yards
+    , AVG(air_yards)            AS avg_air_yards
+    , SUM(yards_after_catch)    AS total_yards_after_catch
+    , AVG(yards_after_catch)    AS avg_yards_after_catch
+    , SUM(pass_touchdown)       AS pass_touchdowns
+    , SUM(interception)         AS interceptions
+    , SUM(pass_attempt)         AS pass_attempts
+    , SUM(complete_pass)        AS completions
+FROM raw_pbp2023
+WHERE play_type = 'pass'
+GROUP BY posteam         -- One record for each passer/team combination
+    , passer_player_id
+;
+```
+
+| posteam | passer_player_id | total_air_yards |    avg_air_yards | total_yards_after_catch | avg_yards_after_catch | pass_touchdowns | interceptions | pass_attempts | completions |
+| :------ | :--------------- | --------------: | ---------------: | ----------------------: | --------------------: | --------------: | ------------: | ------------: | ----------: |
+| ARI     | 00-0033949       |            2198 | 8.26315789473684 |                     649 |      3.88622754491018 |               8 |             5 |           285 |         167 |
+| ARI     | 00-0035228       |            1935 | 7.24719101123596 |                     977 |      5.55113636363636 |              10 |             5 |           289 |         176 |
+| ARI     | 00-0038582       |              53 | 2.52380952380952 |                      43 |      3.58333333333333 |               0 |             2 |            28 |          12 |
+| ...     | ...              |             ... |              ... |                     ... |                   ... |             ... |           ... |           ... |         ... |
+
+Take note that while every field in the `SELECT` clause that is not being aggregated should be included in the `GROUP BY` clause, the reverse is not true. If we were to remove the `passer_player_id` field from the `SELECT` clause, our results would look similar to the above, but would not include the `passer_player_id` field in the output.
+
+Let's take one more opportunity to clean up our query. While fields like `avg_air_yards` and `avg_yards_after_catch` can be insightful, these types of metrics might be better suited to be calculated in our visualization tool. While we are at it, lets add one more field to our query.
+
+```sql
+SELECT passer_player_id
+    , SUM(air_yards)            AS total_air_yards
+    , SUM(yards_after_catch)    AS total_yards_after_catch
+    , SUM(yards_gained)         AS total_yards_gained
+    , SUM(pass_touchdown)       AS pass_touchdowns
+    , SUM(interception)         AS interceptions
+    , SUM(pass_attempt)         AS pass_attempts
+    , SUM(complete_pass)        AS completions
+FROM raw_pbp2023
+WHERE play_type = 'pass'
+GROUP BY posteam         -- One record for each passer/team combination
+    , passer_player_id
+;
+```
+
+| passer_player_id | total_air_yards | total_yards_after_catch | total_yards_gained | pass_touchdowns | interceptions | pass_attempts | completions |
+| :--------------- | --------------: | ----------------------: | -----------------: | --------------: | ------------: | ------------: | ----------: |
+| 00-0033949       |            2198 |                     649 |               1443 |               8 |             5 |           285 |         167 |
+| 00-0035228       |            1935 |                     977 |               1680 |              10 |             5 |           289 |         176 |
+| 00-0038582       |              53 |                      43 |                 21 |               0 |             2 |            28 |          12 |
+| ...              |             ... |                     ... |                ... |             ... |           ... |           ... |         ... |
+
+Hold on to this lastest version of this query that is providing us with the passing stats for the 2023 season. In the [next lesson](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-3/03_01) we will start to add some player names from the `raw_players` table, as well as remove the records of players who don't typically play quarterback.
