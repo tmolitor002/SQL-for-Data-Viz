@@ -21,4 +21,4 @@ Copy and paste or transcribe the query above into the first window, and click ei
 
 Below the editor, after running the query you should see data appear in the results window. The results window gives you a preview of the data you returned from the query. For the query we just ran, `SELECT * FROM raw_players`, the results window should look exactly like `players.csv` and the `raw_players` table seen in the Browse Data tab.
 
-We are all set up now. In the next lesson, we will begin to dive into the SQL language, and start to manipulate our raw tables into useable data for a visualization.
+We are all set up now. In the next lesson, we will begin to dive into the SQL language, and start to manipulate our raw tables into useable data for a visualization. In the next section, we will begin to look at the basic structure of a SQL query starting with a simple [Select From](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-2/02_01-Select%20From.md) statement.
