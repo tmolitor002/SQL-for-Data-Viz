@@ -136,9 +136,9 @@ WHERE
 
 Now we are getting the players we are looking for, but the above query is still a bit messy, particularily how all the different positions are laid out.
 
-## The IN sub-clause
+## The IN operator
 
-Although our logic above works, it gets a bit repetive to type out `or <fieldname> = '<value>'` over and over again. We us the `IN` sub-clause to filter for records where the value of a certain field is within a list of allowable values
+Although our logic above works, it gets a bit repetive to type out `or <fieldname> = '<value>'` over and over again. We us the `IN` operator to filter for records where the value of a certain field is within a list of allowable values.
 
 ```sql
 SELECT gsis_id
@@ -149,6 +149,10 @@ SELECT gsis_id
     , headshot
 FROM raw_players
 WHERE status = 'ACT'                                -- Only Active players and...
-    AND position IN ('QB', 'HB', 'RB', 'WR', 'TE')  -- ONly these positions
+    AND position IN ('QB', 'HB', 'RB', 'WR', 'TE')  -- Only these positions
 ;
 ```
+
+---
+
+Now that we have an understanding of how to query a subset of our data from SQL, we are well on our way to gaining valuable insights. In the [next lesson](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-2/02_03-Aggregation%20in%20SQL.md), we will start to look at some of the basic arithmetic operations we can do in SQL to gain additional insights.
