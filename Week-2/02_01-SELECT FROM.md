@@ -1,6 +1,6 @@
 # SELECT \* FROM
 
-`SELECT * FROM` is often the starting point of most SQL queries. Add the name of the [table](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-1/02-Starting%20DB%20Browser.md#what-is-a-table) in your database and you will quickly see data in your results window. To better understand what is happening here, let's break down our first query: `SELECT * FROM raw_players`.
+`SELECT * FROM` is often the starting point of most SQL queries. Add the name of the [table](../Week-1/01_02-Starting%20DB%20Browser.md#what-is-a-table) in your database and you will quickly see data in your results window. To better understand what is happening here, let's break down our first query: `SELECT * FROM raw_players`.
 
 ## SELECT \*
 
@@ -103,7 +103,7 @@ FROM raw_players
 Making your query legilbe is an important part of writing quality code. It allows other developers to quickly understand your query and the logic you put into developing it. Here are a couple things I like to do before I complete any code.
 
 - Always make the ID field the first field selected
-  - Almost every table in your database will likely have an [ID or Primary Key](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-1/02-Starting%20DB%20Browser.md#keys-and-ids) field that is unique to every record. Having that Primary Key field as the first in your SELECT statement makes it clear what fields can be used to determine unique records that may otherwise appear similar.
+  - Almost every table in your database will likely have an [ID or Primary Key](../Week-1/01_02-Starting%20DB%20Browser.md#keys-and-ids) field that is unique to every record. Having that Primary Key field as the first in your SELECT statement makes it clear what fields can be used to determine unique records that may otherwise appear similar.
 - Include foreign keys immediately after the ID field
   - Having foreign keys at the top of statement helps identify what fields might be used by other tables.
 - Utilize indentation and page breaks
@@ -138,4 +138,4 @@ FROM [raw_players]
 
 ---
 
-There is plenty more to learn about the SELECT statement in a SQL query that will be covered in future lessons, but before we get to that, we're going to look at how we can begin to filter and manipulate the data that is returned in our queries by looking at a new part of the SQL query: [The WHERE clause](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-2/02_02-The%20Where%20clause.md).
+There is plenty more to learn about the SELECT statement in a SQL query that will be covered in future lessons, but before we get to that, we're going to look at how we can begin to filter and manipulate the data that is returned in our queries by looking at a new part of the SQL query: [The WHERE clause](../Week-2/02_02-The%20WHERE%20clause.md).
