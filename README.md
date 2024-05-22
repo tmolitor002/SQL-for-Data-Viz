@@ -20,4 +20,5 @@ The best way to learn about the course is to jump right in. The content and lear
 
 ### Week 3
 
-- [JOINS](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-2/03_01-JOINS.md)
+- [JOINS](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-3/03_01-JOINS.md)
+- [IDs and Normalization](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-3/03_02-IDs%20and%20Normalization.md)
