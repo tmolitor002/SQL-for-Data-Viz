@@ -1,6 +1,6 @@
 # The WHERE clause
 
-In the [previous lesson](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-2/02_01-SELECT%20FROM.md), we were able to narrow down the different fields we wanted by listing them in the `SELECT` statement. Similarily, we choose which _records_ we want returned by adding a `WHERE` clause to the query.
+In the [previous lesson](../Week-2/02_01-SELECT%20FROM.md), we were able to narrow down the different fields we wanted by listing them in the `SELECT` statement. Similarily, we choose which _records_ we want returned by adding a `WHERE` clause to the query.
 
 In the `raw_players` table, there is ~20,000 records, one for each player. That table is not limited to just active players, but players who have retired, injured, or just on a practice squad. Many of the players in the table may have never played a snap of football in the NFL. It also consists of players who might play positions that we have little interest in in our analytics.
 
@@ -155,4 +155,4 @@ WHERE status = 'ACT'                                -- Only Active players and..
 
 ---
 
-Now that we have an understanding of how to query a subset of our data from SQL, we are well on our way to gaining valuable insights. In the [next lesson](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-2/02_03-Aggregation%20in%20SQL.md), we will start to look at some of the basic arithmetic operations we can do in SQL to gain additional insights.
+Now that we have an understanding of how to query a subset of our data from SQL, we are well on our way to gaining valuable insights. In the [next lesson](../Week-2/02_03-Aggregation%20in%20SQL.md), we will start to look at some of the basic arithmetic operations we can do in SQL to gain additional insights.

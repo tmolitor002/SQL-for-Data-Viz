@@ -1,6 +1,6 @@
 # IDs and Normalization
 
-In the previous lesson, we reviewed how when joining tables together, we have to be mindful of [Cartesian joins](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-3/03_01-JOINs.md#cartesian-joins) expanding the results of query beyond the actual scope of what is intended. This is one of the reasons that tables should have a primary key whenever possible.
+In the previous lesson, we reviewed how when joining tables together, we have to be mindful of [Cartesian joins](../Week-3/03_01-JOINs.md) expanding the results of query beyond the actual scope of what is intended. This is one of the reasons that tables should have a primary key whenever possible.
 
 The other reason to use IDs is to help with data normalization. In a nutshell, normalization is the process of minimizing the redundant existence of data within a database.
 

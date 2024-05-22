@@ -6,22 +6,22 @@ You've already taken a big step! You've downloaded all the tools you'll need, an
 
 Once you've opened DB Browser, you should be greeted with an screen like this:
 
-![0102-1.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-1.png?raw=true)
+![0102-1.png](../resources/images/0102-1.png)
 
 First, click on `New Database` towards the top left. Once you name and save your database, you may get a new window asking you to edit the table definition. Click `Cancel`.
 
-![0102-2.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-2.png?raw=true)
+![0102-2.png](../resources/images/0102-2.png)
 
 You may have noticed four new items appear under the Database Structure tab, all of which ending with `(0)`. In a moment, the Tables items will grow to three once we've imported our raw data.
 
 Next, we want to import the `players.csv` file to create our first table. To do this, select `File > Import > Table from CSV file...` and select the `players.csv` file you previously downloaded.
 
-![0102-3.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-3.png?raw=true)
-![0102-4.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-4.png?raw=true)
+![0102-3.png](../resources/images/0102-3.png)
+![0102-4.png](../resources/images/0102-4.png)
 
 A second window will now open in DB Browser showing you a preview of the data you are about to bring in. The default values should be fine, however, change the **Table name** to `raw_players`. Check your other setting below, and then select _OK_.
 
-![0102-5.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-5.png?raw=true)
+![0102-5.png](../resources/images/0102-5.png)
 
 Now you should see that the number of tables in your database has increased to 1 in the Database Structure tab. Under players, you should see your new table named `raw_players`.
 
@@ -37,7 +37,7 @@ If you do not want to import the data yourself, you can download this [database 
 
 Congratulations, you database is now up and running! It should look something like this:
 
-![0102-6.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-6.png?raw=true)
+![0102-6.png](../resources/images/0102-6.png)
 
 From this point alone you could connect to your database and begin to visualize your data. But then we wouldn't learn much SQL. And certainly you have questions about what is a table, and why we added `raw_` to the start of the table names.
 
@@ -47,7 +47,7 @@ From this point alone you could connect to your database and begin to visualize 
 
 At its very core, a table in SQL is a dataset laid out in two dimensions. Instead of using columns and rows like in a spreadsheet, a table uses **fields** and **records**. **Fields** run from left-to-right, and are typically distinct types of data. In DB Browser, select the carrot next to `raw_players` to expand the table to see a list of the different fields within the table.
 
-![0102-7.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-7.png?raw=true)
+![0102-7.png](../resources/images/0102-7.png)
 
 ## Fields
 
@@ -70,7 +70,7 @@ If the fields in the table identify what type of data is represented in a given 
 
 Its important to note that while data often repeats itself within a single field of a table, each record should represent a unique item. We don't have to look too hard to see this in `raw_players`.
 
-![0102-8.png](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/resources/images/0102-8.png?raw=true)
+![0102-8.png](../resources/images/0102-8.png)
 
 In rows 11 and 12, we see two players both named `A.J. Davis`. Both players are retired, have the same value in the various `_name` fields, and are missing birthdays. It isn't until we go further on to see that both players are different heights, have a different value for `current_team` and play different positions where we start to see these are two players who happen to have the same name. Examining the `esb_id` and `gsis_id` field closely also reveals that these are two different players.
 
@@ -90,7 +90,7 @@ Primary Keys can come in several forms, such as a unique number or string of tex
 
 Unlike primary and surrogate keys, **Foreign Keys**, often stylized as `FK`, are not unique to the table. Instead they are fields that contain the primary keys of a record **in another table**. For example, in `raw_pbp2023`, the fields `passer_player_id`, `receiver_player_id`, and `rusher_player_id`, all contain a foreign key that reference back to the `raw_players` table. Foreign Keys are not required to ever appear in a table, but often do as database administrators attempt to [normalize](https://en.wikipedia.org/wiki/Database_normalization) their datasets.
 
-# Raw*, xfrmt* and analytics\_
+# Raw\_, xfrmt\_ and analytics\_
 
 When working with and transforming data, it is often helpful to bucket different objects such as tables together. Whether to keep different types of data separate from each other or to keep track of data at different points along its transformation, schemas such as `raw_`, `xfrmt_`, and `analytics_` are often used to group tables and other items together and organized.
 
@@ -113,4 +113,4 @@ B --> C(analytics_)
 
 ---
 
-Up next we will explore the rest of [DB Browser](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-1/01_03-Exploring%20DB%20Browser.md) and write our first SQL statement.
+Up next we will explore the rest of [DB Browser](../Week-1/01_03-Exploring%20DB%20Browser.md) and write our first SQL statement.

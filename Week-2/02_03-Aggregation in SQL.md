@@ -252,4 +252,4 @@ GROUP BY posteam         -- One record for each passer/team combination
 | 00-0038582       |              53 |                      43 |                 21 |               0 |             2 |            28 |          12 |
 | ...              |             ... |                     ... |                ... |             ... |           ... |           ... |         ... |
 
-Hold on to this lastest version of this query that is providing us with the passing stats for the 2023 season. In the [next lesson](https://github.com/tmolitor002/SQL-for-Data-Viz/blob/main/Week-3/03_01) we will start to add some player names from the `raw_players` table, as well as remove the records of players who don't typically play quarterback.
+Hold on to this lastest version of this query that is providing us with the passing stats for the 2023 season. In the [next lesson](../Week-3/03_01-JOINs.md) we will start to add some player names from the `raw_players` table, as well as remove the records of players who don't typically play quarterback.
