@@ -55,6 +55,10 @@ Draw.io is a great tool for creating functional diagrams. We will use it to summ
 
 GitHub is a popular repository used for version control and sharing code with others. A copy of this course is available on GitHub [here](https://github.com/tmolitor002/SQL-for-Data-Viz).
 
+### [PoorSQL](https://poorsql.com/) (web)
+
+PoorSQL is a great site if you don't want to spend too much time focusing on properly formatting your SQL query.
+
 ## Course Project Overview
 
 The project for this course will focus on play-by-play data from the 2023 NFL season. We will start with raw play-by-play data provided by [nflverse](https://github.com/nflverse/nflverse-data). From there, we will create several staging tables, centered on player position, plays, games, and stadiums. Finally, we will create several transformation tables that show the best performing players at any given position that will be ready for consumption by a data visualization tool.

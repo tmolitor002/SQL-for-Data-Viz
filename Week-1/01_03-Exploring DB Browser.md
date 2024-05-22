@@ -15,6 +15,7 @@ There are three main windows on this tab. The first pane is the SQL editor, wher
 ```sql
 SELECT *
 FROM raw_players
+;
 ```
 
 Copy and paste or transcribe the query above into the first window, and click either the play button, `F5` on Windows, or `Command` + `r` on Mac. This will execute the query against the table. We will cover more about what the above query means in a <later lesson>.
