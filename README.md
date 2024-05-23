@@ -23,6 +23,11 @@ The best way to learn about the course is to jump right in. The content and lear
 - [JOINS](./Week-3/03_01-JOINs.md)
 - [IDs and Normalization](./Week-3/03_02-IDs%20and%20Normalization.md)
 - [WITH and UNION](./Week-3/03_03-WITH%20and%20UNION.md)
+- [Project Update and Arithmetic](./Week-3/03_04-Project%20Update%20and%20Arithmetic.md)
+
+#### Week 4
+
+- [Comparison Operators and IF THEN CASE ELSE](./Week-4/04_01-Comparison%20Operators%20and%20IF%20THEN%20ELSE%20CASE.md)
 
 ## Queries
 
