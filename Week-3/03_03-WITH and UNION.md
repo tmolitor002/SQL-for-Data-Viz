@@ -195,3 +195,7 @@ FROM passing_2022       -- ...From the passing 2023 CTE
 While this example only used the `UNION` instruction once to bring two tables together, SQL will allow you to union many more than 2 tables together within the same query.
 
 Do note that while this example used the `*` wildcard to select all fields from both tables, this can easily backfire if the field names are not between all the tables being unioned. The best practice is to list out each field being selected from each table, and ensure they are in the same order withing each SELECT statement.
+
+---
+
+In the [next lesson](./03_04-Project%20Update%20and%20Arithmetic.md), we have a small update to make to the structure of our query, and will dive into how to use arithmetic to manipulate some of the data in the query.
